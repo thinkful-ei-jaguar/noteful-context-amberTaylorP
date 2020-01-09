@@ -8,6 +8,7 @@ import NotePageMain from '../NotePageMain/NotePageMain';
 import dummyStore from '../dummy-store';
 import {getNotesForFolder, findNote, findFolder} from '../notes-helpers';
 import './App.css';
+import NotesContext from '../NoteCopy'
 
 class App extends Component {
     state = {
@@ -57,6 +58,7 @@ class App extends Component {
         const {notes, folders} = this.state;
         return (
             <>
+            
                 {['/', '/folder/:folderId'].map(path => (
                     <Route
                         exact
@@ -85,6 +87,7 @@ class App extends Component {
                         return <NotePageMain {...routeProps} note={note} />;
                     }}
                 />
+                
             </>
         );
     }
@@ -99,7 +102,10 @@ class App extends Component {
                         <FontAwesomeIcon icon="check-double" />
                     </h1>
                 </header>
-                <main className="App__main">{this.renderMainRoutes()}</main>
+                <main className="App__main">
+                    
+                        {this.renderMainRoutes()}
+                </main>
             </div>
         );
     }
